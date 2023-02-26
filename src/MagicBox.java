@@ -11,7 +11,7 @@ public class MagicBox<T> {
 
     public boolean add(T item) {
         for (int i = 0; i < items.length; i++) {
-            if (items[i] == null | items[i] != null & size > items.length) {
+            if (items[i] == null) {
                 items[i] = item;
                 System.out.println("True значение " + item + " записано");
                 return true;
@@ -23,15 +23,13 @@ public class MagicBox<T> {
 
     public T pick() {
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null & items.length == size) {
+            if (items[i] != null) {
                 Random random = new Random();
                 int randomInt = random.nextInt(size);
-                System.out.println(items[randomInt]);
+                return (items[randomInt]);
             }
-            else {
-                int k = items.length - 1;
-                throw new RuntimeException("Ошибка, коробка не полна. Осталоcь заполнить:" + k);
-            }
-        } return null;
+        }
+        int k = size;
+        throw new RuntimeException("Ошибка, коробка не полна. Осталоcь заполнить:" + k);
     }
 }
